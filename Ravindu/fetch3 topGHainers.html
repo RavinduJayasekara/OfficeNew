@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      const fetchResult = () => {
+        return fetch("http://192.168.1.12:8080/atsweb/watch?", {
+          method: "POST",
+          headers: {
+            Accept: "*/*",
+            "Content-Type": "application/json",
+          },
+          body: "action=topLosers&format=json&size=10&exchange=CSE&bookDefId=1",
+        })
+          .then((response) => response.json())
+          .then((json) => console.log(json))
+          .catch((error) => console.error(error));
+      };
+    </script>
+  </head>
+  <body>
+    <button onclick="fetchResult()">Fetch</button>
+  </body>
+</html>
